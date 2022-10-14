@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +21,7 @@ public class fragment_2 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private EditText editText;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,7 +61,32 @@ public class fragment_2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_2, container, false);
+        View v = inflater.inflate(R.layout.fragment_2, container, false);
+
+        editText =(EditText) v.findViewById(R.id.editTextNumber);
+        int age=0;
+        editText.setText(""+age);
+        Button voltar = (Button) v.findViewById(R.id.Voltar);
+        voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment_1 fr = new fragment_1();
+                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+                fc.replaceFragment(fr);
+            }
+        });
+        Button guardar = (Button) v.findViewById(R.id.Guardar);
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int age = Integer.parseInt(editText.getText().toString());
+
+                fragment_1 fr = new fragment_1();
+                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+                fc.replaceFragment(fr);
+            }
+        });
+
+        return v;
     }
 }
