@@ -68,7 +68,6 @@ public class fragment_2 extends Fragment{
         //model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
-        id = R.drawable.frog;
         Animal a = model.getAnimal(id);
         age = a.getAge();
         name = a.getName();
