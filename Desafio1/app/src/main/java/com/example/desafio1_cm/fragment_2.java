@@ -68,15 +68,15 @@ public class fragment_2 extends Fragment{
         //model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
-        Animal a = model.getAnimal(id);
-        age = a.getAge();
-        name = a.getName();
+        //Animal a = model.getAnimal(id);
+        //age = a.getAge();
+        //name = a.getName();
 
         editTextAge =(EditText) v.findViewById(R.id.editTextNumber);
-        editTextAge.setText(""+age);
+        //editTextAge.setText(""+age);
 
         editTextName =(EditText) v.findViewById(R.id.editTextTextPersonName);
-        editTextName.setText(""+name);
+        //editTextName.setText(""+name);
 
         Button voltar = (Button) v.findViewById(R.id.Voltar);
         voltar.setOnClickListener(new View.OnClickListener() {

@@ -385,6 +385,17 @@ attr initialActivityCount
 attr insetForeground
 attr isLightTheme
 attr isMaterialTheme
+attr iss_auto_cycle
+attr iss_corner_radius
+attr iss_delay
+attr iss_error_image
+attr iss_indicator_align
+attr iss_period
+attr iss_placeholder
+attr iss_selected_dot
+attr iss_text_align
+attr iss_title_background
+attr iss_unselected_dot
 attr itemBackground
 attr itemFillColor
 attr itemHorizontalPadding
@@ -817,8 +828,10 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color grey_font
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color light_font
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -921,6 +934,8 @@ color teal_200
 color teal_700
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
+color text_shadow
+color text_shadow_white
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -1346,13 +1361,17 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable default_selected_dot
+drawable default_unselected_dot
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable error
 drawable frog
+drawable gradient
 drawable ic_calendar_black_24dp
 drawable ic_clear_black_24dp
 drawable ic_edit_black_24dp
@@ -1366,6 +1385,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable loading
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1388,6 +1408,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable placeholder
 drawable rhino
 drawable snail
 drawable test_custom_background
@@ -1468,7 +1489,6 @@ id barrier
 id beginning
 id blocking
 id bottom
-id button6
 id buttonPanel
 id cancel_button
 id center
@@ -1507,6 +1527,7 @@ id disableHome
 id dropdown_menu
 id editTextNumber
 id editTextTextPersonName
+id edit_animal
 id edit_query
 id end
 id enterAlways
@@ -1523,6 +1544,7 @@ id filter_chip
 id fitToContents
 id fixed
 id forever
+id fragment
 id fragment_container_view_tag
 id frameLayout
 id frameLayout2
@@ -1538,6 +1560,7 @@ id icon
 id icon_group
 id ifRoom
 id image
+id image_view
 id info
 id invisible
 id italic
@@ -1547,6 +1570,7 @@ id largeLabel
 id left
 id line1
 id line3
+id linear_layout
 id listMode
 id list_item
 id masked
@@ -1592,6 +1616,7 @@ id off
 id on
 id outline
 id packed
+id pager_dots
 id parallax
 id parent
 id parentPanel
@@ -1673,6 +1698,7 @@ id textView
 id textView2
 id text_input_end_icon
 id text_input_start_icon
+id text_view
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -1694,6 +1720,7 @@ id unlabeled
 id up
 id useLogo
 id view_offset_helper
+id view_pager
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
@@ -1781,6 +1808,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_1
 layout fragment_2
+layout image_slider
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -1815,6 +1843,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout pager_row
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1878,6 +1907,7 @@ string fab_transformation_sheet_behavior
 string guardar
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string left
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_suffix
@@ -2639,6 +2669,7 @@ styleable Fragment android_name android_id android_tag
 styleable FragmentContainerView android_name android_tag
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
+styleable ImageSlider iss_auto_cycle iss_corner_radius iss_delay iss_error_image iss_indicator_align iss_period iss_placeholder iss_selected_dot iss_text_align iss_title_background iss_unselected_dot
 styleable LinearConstraintLayout android_orientation
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
