@@ -1,13 +1,14 @@
-com/example/desafio1_cm/fragment_1.java
- com.example.desafio1_cm.fragment_1
-com/example/desafio1_cm/FragmentChangeListener.java
- com.example.desafio1_cm.FragmentChangeListener
 com/example/desafio1_cm/BuildConfig.java
  com.example.desafio1_cm.BuildConfig
-com/example/desafio1_cm/Animal.java
- com.example.desafio1_cm.Animal
+com/example/desafio1_cm/FragmentChangeListener.java
+ com.example.desafio1_cm.FragmentChangeListener
 com/example/desafio1_cm/SharedViewModel.java
  com.example.desafio1_cm.SharedViewModel
+com/example/desafio1_cm/Animal.java
+ com.example.desafio1_cm.Animal
+com/example/desafio1_cm/fragment_1.java
+ com.example.desafio1_cm.fragment_1
+ com.example.desafio1_cm.fragment_1$1
 com/example/desafio1_cm/MainActivity.java
  com.example.desafio1_cm.MainActivity
 com/example/desafio1_cm/fragment_2.java
