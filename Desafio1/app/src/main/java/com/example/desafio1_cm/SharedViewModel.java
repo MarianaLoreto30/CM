@@ -16,8 +16,8 @@ public class SharedViewModel extends ViewModel {
         //animals.addAll(allAnimals);
     }
 
-    public LiveData getAnimals() {
-        return animals;
+    public ArrayList<Animal> getAnimals() {
+        return animals.getValue();
     }
 
     /*public ArrayList<Animal> getAnimals() {
@@ -25,10 +25,6 @@ public class SharedViewModel extends ViewModel {
     }*/
 
     public Animal getAnimal(int drawable) {
-        if(animals.getValue()==null){
-            System.out.println(":)");
-            return null;
-        }
         for (Animal a: animals.getValue())
         {
             if(a.getPicture() == drawable){

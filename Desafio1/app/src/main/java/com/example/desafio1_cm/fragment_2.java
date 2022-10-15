@@ -20,13 +20,12 @@ import android.widget.EditText;
 public class fragment_2 extends Fragment{
 
     private SharedViewModel model;
-    private static final String ARG_AGE = "argAge";
-    private static final String ARG_NAME = "argName";
 
     private EditText editTextAge;
     private EditText editTextName;
     private int age;
     private String name;
+    private int id;
 
     public fragment_2() {
         // Required empty public constructor
@@ -56,7 +55,7 @@ public class fragment_2 extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            age = getArguments().getInt(ARG_AGE);
+            id = getArguments().getInt("id");
         }
     }
 
@@ -69,13 +68,10 @@ public class fragment_2 extends Fragment{
         //model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
-        int id = R.drawable.frog;
+        id = R.drawable.frog;
         Animal a = model.getAnimal(id);
-        System.out.println(a.getAge());
-
-        if(getArguments() != null){
-            //age = getArguments().
-        }
+        age = a.getAge();
+        name = a.getName();
 
         editTextAge =(EditText) v.findViewById(R.id.editTextNumber);
         editTextAge.setText(""+age);
@@ -99,6 +95,7 @@ public class fragment_2 extends Fragment{
             public void onClick(View v) {
                 int age = Integer.parseInt(editTextAge.getText().toString());
                 String name = editTextName.getText().toString();
+                model.changeAnimal(id,age,name);
 
                 fragment_1 fr = new fragment_1();
                 FragmentChangeListener fc = (FragmentChangeListener) getActivity();
