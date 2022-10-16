@@ -1527,7 +1527,6 @@ id disableHome
 id dropdown_menu
 id editTextNumber
 id editTextTextPersonName
-id edit_animal
 id edit_query
 id end
 id enterAlways

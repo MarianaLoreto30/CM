@@ -23,8 +23,6 @@ public class fragment_2 extends Fragment{
 
     private EditText editTextAge;
     private EditText editTextName;
-    private int age;
-    private String name;
     private int id;
 
     public fragment_2() {
@@ -38,7 +36,7 @@ public class fragment_2 extends Fragment{
      *
      * @return A new instance of fragment fragment_2.
      */
-    public static fragment_2 newInstance(/*int age, String name*/) {
+    public static fragment_2 newInstance(/*int id*/) {
         fragment_2 fragment = new fragment_2();
 
         //String name = getArguments().getString("ARG_NAME");
@@ -68,15 +66,13 @@ public class fragment_2 extends Fragment{
         //model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
-        //Animal a = model.getAnimal(id);
-        //age = a.getAge();
-        //name = a.getName();
+        Animal a = model.getAnimalByPos(id);
 
         editTextAge =(EditText) v.findViewById(R.id.editTextNumber);
-        //editTextAge.setText(""+age);
+        editTextAge.setText(""+a.getAge());
 
         editTextName =(EditText) v.findViewById(R.id.editTextTextPersonName);
-        //editTextName.setText(""+name);
+        editTextName.setText(a.getName());
 
         Button voltar = (Button) v.findViewById(R.id.Voltar);
         voltar.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +90,7 @@ public class fragment_2 extends Fragment{
             public void onClick(View v) {
                 int age = Integer.parseInt(editTextAge.getText().toString());
                 String name = editTextName.getText().toString();
-                model.changeAnimal(id,age,name);
+                model.changeAnimalByPos(id,age,name);
 
                 fragment_1 fr = new fragment_1();
                 FragmentChangeListener fc = (FragmentChangeListener) getActivity();

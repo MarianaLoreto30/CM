@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
@@ -70,33 +71,29 @@ public class fragment_1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
         ImageSlider imageSlider = (ImageSlider) view.findViewById(R.id.slide);
         ArrayList<SlideModel> slideModels= new ArrayList<SlideModel>();
-        Animal a1 = model.getAnimal(R.drawable.frog);
-        Animal a2 = model.getAnimal(R.drawable.rhino);
-        Animal a3 = model.getAnimal(R.drawable.snail);
+        ArrayList<Animal> animals = model.getAnimals();
 
-        String string_1 = a1.getName() + "\n" + a1.getAge() + "\n" + a1.getOwner();
-        String string_2 = a2.getName() + "\n" + a2.getAge() + "\n" + a2.getOwner();
-        String string_3 = a3.getName() + "\n" + a3.getAge() + "\n" + a3.getOwner();
+        for (Animal a:animals){
+            String string = a.getName() + "\n" + a.getAge() + "\n" + a.getOwner();
+            SlideModel slideElement = new SlideModel(a.getPicture(), string, ScaleTypes.FIT);
+            slideModels.add(slideElement);
+        }
 
-        SlideModel first = new SlideModel(a1.getPicture(), string_1, ScaleTypes.FIT);
-        SlideModel second = new SlideModel(a2.getPicture(), string_2, ScaleTypes.FIT);
-        SlideModel third = new SlideModel(a3.getPicture(), string_3, ScaleTypes.FIT);
-        // SlideModel fourth = new SlideModel(a1.getPicture(), string_1, ScaleTypes.FIT);
-
-        slideModels.add(first);
-        slideModels.add(second);
-        slideModels.add(third);
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
-        Button edit = (Button) view.findViewById(R.id.edit_animal);
-        edit.setOnClickListener(new View.OnClickListener() {
+        imageSlider.setItemClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemSelected(int position) {
                 fragment_2 fr = new fragment_2();
+                Bundle arg =  new Bundle();
+                arg.putInt("id",position);
+
+                fr.setArguments(arg);
                 FragmentChangeListener fc = (FragmentChangeListener) getActivity();
                 fc.replaceFragment(fr);
             }
         });
+
         imageSlider.stopSliding();
 
         return view;

@@ -34,6 +34,10 @@ public class SharedViewModel extends ViewModel {
         return null;
     }
 
+    public Animal getAnimalByPos(int pos) {
+        return animals.getValue().get(pos);
+    }
+
     public void changeAnimal(int drawable, int age, String name){
         for (Animal a: animals.getValue())
         {
@@ -42,6 +46,12 @@ public class SharedViewModel extends ViewModel {
                 a.setName(name);
             }
         }
+    }
+
+    public void changeAnimalByPos (int pos, int age, String name){
+        Animal a = animals.getValue().get(pos);
+        a.setAge(age);
+        a.setName(name);
     }
 }
 
