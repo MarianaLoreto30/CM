@@ -1419,6 +1419,7 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id Editar
 id FUNCTION
 id FragC
 id Guardar
@@ -1896,6 +1897,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string age
+string animal
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior

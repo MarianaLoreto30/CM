@@ -4,6 +4,7 @@
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
     <string name="age">Age</string>
+    <string name="animal">Animal</string>
 
     <string-array name="animal_names">
         <item>Frog</item>

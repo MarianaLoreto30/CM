@@ -24,6 +24,7 @@ public class fragment_2 extends Fragment{
     private EditText editTextAge;
     private EditText editTextName;
     private int id;
+    private FragmentChangeListener fcl;
 
     public fragment_2() {
         // Required empty public constructor
@@ -62,11 +63,11 @@ public class fragment_2 extends Fragment{
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_2, container, false);
-
+        fcl = (MainActivity) inflater.getContext();
         //model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
-        Animal a = model.getAnimalByPos(id);
+        Animal a = model.getAnimal(id);
 
         editTextAge =(EditText) v.findViewById(R.id.editTextNumber);
         editTextAge.setText(""+a.getAge());
@@ -79,8 +80,7 @@ public class fragment_2 extends Fragment{
             @Override
             public void onClick(View v) {
                 fragment_1 fr = new fragment_1();
-                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-                fc.replaceFragment(fr);
+                fcl.replaceFragment(fr);
             }
         });
 
@@ -90,11 +90,10 @@ public class fragment_2 extends Fragment{
             public void onClick(View v) {
                 int age = Integer.parseInt(editTextAge.getText().toString());
                 String name = editTextName.getText().toString();
-                model.changeAnimalByPos(id,age,name);
+                model.changeAnimal(id,age,name);
 
                 fragment_1 fr = new fragment_1();
-                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-                fc.replaceFragment(fr);
+                fcl.replaceFragment(fr);
             }
         });
 

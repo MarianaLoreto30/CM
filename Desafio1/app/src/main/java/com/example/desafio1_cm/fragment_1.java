@@ -42,6 +42,8 @@ public class fragment_1 extends Fragment {
     private String mParam1;
     private String mParam2;
     Spinner spinner;
+    private int id;
+    private FragmentChangeListener fcl;
 
     public fragment_1() {
         // Required empty public constructor
@@ -76,7 +78,10 @@ public class fragment_1 extends Fragment {
         // Inflate the layout for this fragment
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         View view = inflater.inflate(R.layout.fragment_1, container, false);
+        //getMain activity
+        fcl = (MainActivity) inflater.getContext();
         ArrayList<Animal> animals = model.getAnimals();
+        id = animals.get(1).getPicture();
         TextView txtName = (TextView) view.findViewById(R.id.textName);
         TextView txtOwner = (TextView) view.findViewById(R.id.textOwner);
         TextView txtAge = (TextView) view.findViewById(R.id.textAge);
@@ -93,11 +98,25 @@ public class fragment_1 extends Fragment {
                 txtOwner.setText(animal.getOwner());
                 txtAge.setText(String.valueOf(animal.getAge()));
                 img.setImageResource(animal.getPicture());
+                id = animal.getPicture();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // TODO Auto-generated method stub
+            }
+        });
+
+        Button editar = (Button) view.findViewById(R.id.Editar);
+        editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                fragment_2 fr = new fragment_2();
+                Bundle arg = new Bundle();
+                arg.putInt("id", id);
+                fr.setArguments(arg);
+                fcl.replaceFragment(fr);
             }
         });
 
