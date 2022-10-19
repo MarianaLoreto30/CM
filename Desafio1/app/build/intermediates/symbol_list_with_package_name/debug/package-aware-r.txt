@@ -52,6 +52,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array animal_names
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -1560,6 +1561,7 @@ id icon_group
 id ifRoom
 id image
 id image_view
+id img
 id info
 id invisible
 id italic
@@ -1665,6 +1667,7 @@ id snap
 id snapMargins
 id spacer
 id special_effects_controller_view_tag
+id spinner1
 id split_action_bar
 id spread
 id spread_inside
@@ -1689,7 +1692,10 @@ id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id text
 id text2
+id textAge
 id textEnd
+id textName
+id textOwner
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart

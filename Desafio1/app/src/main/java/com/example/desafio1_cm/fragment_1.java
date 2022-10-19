@@ -9,12 +9,19 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
+
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -34,7 +41,7 @@ public class fragment_1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ImageSlider imageSlider;
+    Spinner spinner;
 
     public fragment_1() {
         // Required empty public constructor
@@ -69,33 +76,32 @@ public class fragment_1 extends Fragment {
         // Inflate the layout for this fragment
         this.model = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         View view = inflater.inflate(R.layout.fragment_1, container, false);
-        ImageSlider imageSlider = (ImageSlider) view.findViewById(R.id.slide);
-        ArrayList<SlideModel> slideModels= new ArrayList<SlideModel>();
         ArrayList<Animal> animals = model.getAnimals();
+        TextView txtName = (TextView) view.findViewById(R.id.textName);
+        TextView txtOwner = (TextView) view.findViewById(R.id.textOwner);
+        TextView txtAge = (TextView) view.findViewById(R.id.textAge);
+        ImageView img = (ImageView) view.findViewById(R.id.img);
 
-        for (Animal a:animals){
-            String string = a.getName() + "\n" + a.getAge() + "\n" + a.getOwner();
-            SlideModel slideElement = new SlideModel(a.getPicture(), string, ScaleTypes.FIT);
-            slideModels.add(slideElement);
-        }
-
-        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
-
-        imageSlider.setItemClickListener(new ItemClickListener() {
+        spinner = (Spinner) view.findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.animal_names, android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(int position) {
-                fragment_2 fr = new fragment_2();
-                Bundle arg =  new Bundle();
-                arg.putInt("id",position);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Animal animal = animals.get(position);
+                txtName.setText(animal.getName());
+                txtOwner.setText(animal.getOwner());
+                txtAge.setText(String.valueOf(animal.getAge()));
+                img.setImageResource(animal.getPicture());
+            }
 
-                fr.setArguments(arg);
-                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-                fc.replaceFragment(fr);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
             }
         });
 
-        imageSlider.stopSliding();
-
         return view;
     }
+
 }
